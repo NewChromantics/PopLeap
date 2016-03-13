@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFDE38061C95A4E700D10F02 /* SoyApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38041C95A4E700D10F02 /* SoyApp.cpp */; };
+		BFDE380A1C95A5F900D10F02 /* SoyThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38081C95A5F900D10F02 /* SoyThread.cpp */; };
+		BFDE380D1C95A61E00D10F02 /* SoyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE380B1C95A61E00D10F02 /* SoyString.cpp */; };
+		BFDE38151C95A63200D10F02 /* memheap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE380E1C95A63200D10F02 /* memheap.cpp */; };
+		BFDE38161C95A63200D10F02 /* SoyAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38101C95A63200D10F02 /* SoyAssert.cpp */; };
+		BFDE38171C95A63200D10F02 /* SoyDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38121C95A63200D10F02 /* SoyDebug.cpp */; };
+		BFDE38181C95A63200D10F02 /* SoyDebug.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38141C95A63200D10F02 /* SoyDebug.mm */; };
+		BFDE381C1C95A64000D10F02 /* SoyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE381A1C95A64000D10F02 /* SoyEvent.cpp */; };
+		BFDE38221C95A65200D10F02 /* SoyTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38201C95A65200D10F02 /* SoyTypes.cpp */; };
+		BFDE38261C95A69900D10F02 /* SoyFilesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38231C95A69900D10F02 /* SoyFilesystem.cpp */; };
+		BFDE38271C95A69900D10F02 /* SoyFilesystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */; };
+		BFDE38291C95A6BF00D10F02 /* SoyString.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38281C95A6BF00D10F02 /* SoyString.mm */; };
+		BFDE382F1C95A97300D10F02 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDE382E1C95A97300D10F02 /* CoreServices.framework */; };
+		FBA28D101AFA329E00CBF5D9 /* PopLeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB8A05911A2E54730099596C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BFDE38041C95A4E700D10F02 /* SoyApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyApp.cpp; path = src/SoyApp.cpp; sourceTree = "<group>"; };
+		BFDE38051C95A4E700D10F02 /* SoyApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyApp.h; path = src/SoyApp.h; sourceTree = "<group>"; };
+		BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SoyLib_Osx.xcconfig; sourceTree = "<group>"; };
+		BFDE38081C95A5F900D10F02 /* SoyThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyThread.cpp; path = src/SoyThread.cpp; sourceTree = "<group>"; };
+		BFDE38091C95A5F900D10F02 /* SoyThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyThread.h; path = src/SoyThread.h; sourceTree = "<group>"; };
+		BFDE380B1C95A61E00D10F02 /* SoyString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyString.cpp; path = src/SoyString.cpp; sourceTree = "<group>"; };
+		BFDE380C1C95A61E00D10F02 /* SoyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyString.h; path = src/SoyString.h; sourceTree = "<group>"; };
+		BFDE380E1C95A63200D10F02 /* memheap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = memheap.cpp; path = src/memheap.cpp; sourceTree = "<group>"; };
+		BFDE380F1C95A63200D10F02 /* memheap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = memheap.hpp; path = src/memheap.hpp; sourceTree = "<group>"; };
+		BFDE38101C95A63200D10F02 /* SoyAssert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyAssert.cpp; path = src/SoyAssert.cpp; sourceTree = "<group>"; };
+		BFDE38111C95A63200D10F02 /* SoyAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyAssert.h; path = src/SoyAssert.h; sourceTree = "<group>"; };
+		BFDE38121C95A63200D10F02 /* SoyDebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyDebug.cpp; path = src/SoyDebug.cpp; sourceTree = "<group>"; };
+		BFDE38131C95A63200D10F02 /* SoyDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyDebug.h; path = src/SoyDebug.h; sourceTree = "<group>"; };
+		BFDE38141C95A63200D10F02 /* SoyDebug.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoyDebug.mm; path = src/SoyDebug.mm; sourceTree = "<group>"; };
+		BFDE38191C95A64000D10F02 /* SoyEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyEnum.h; path = src/SoyEnum.h; sourceTree = "<group>"; };
+		BFDE381A1C95A64000D10F02 /* SoyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyEvent.cpp; path = src/SoyEvent.cpp; sourceTree = "<group>"; };
+		BFDE381B1C95A64000D10F02 /* SoyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyEvent.h; path = src/SoyEvent.h; sourceTree = "<group>"; };
+		BFDE381D1C95A65200D10F02 /* SoyTypes_Android.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyTypes_Android.h; path = src/SoyTypes_Android.h; sourceTree = "<group>"; };
+		BFDE381E1C95A65200D10F02 /* SoyTypes_CoreFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyTypes_CoreFoundation.h; path = src/SoyTypes_CoreFoundation.h; sourceTree = "<group>"; };
+		BFDE381F1C95A65200D10F02 /* SoyTypes_Windows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyTypes_Windows.h; path = src/SoyTypes_Windows.h; sourceTree = "<group>"; };
+		BFDE38201C95A65200D10F02 /* SoyTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyTypes.cpp; path = src/SoyTypes.cpp; sourceTree = "<group>"; };
+		BFDE38211C95A65200D10F02 /* SoyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyTypes.h; path = src/SoyTypes.h; sourceTree = "<group>"; };
+		BFDE38231C95A69900D10F02 /* SoyFilesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyFilesystem.cpp; path = src/SoyFilesystem.cpp; sourceTree = "<group>"; };
+		BFDE38241C95A69900D10F02 /* SoyFilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyFilesystem.h; path = src/SoyFilesystem.h; sourceTree = "<group>"; };
+		BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoyFilesystem.mm; path = src/SoyFilesystem.mm; sourceTree = "<group>"; };
+		BFDE38281C95A6BF00D10F02 /* SoyString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoyString.mm; path = src/SoyString.mm; sourceTree = "<group>"; };
+		BFDE382E1C95A97300D10F02 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		FB8A05931A2E54730099596C /* PopLeap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PopLeap; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopLeap.cpp; path = src/PopLeap.cpp; sourceTree = SOURCE_ROOT; };
+		FBA28D0F1AFA329E00CBF5D9 /* PopLeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopLeap.h; path = src/PopLeap.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB8A05901A2E54730099596C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFDE382F1C95A97300D10F02 /* CoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB8A058A1A2E54730099596C = {
+			isa = PBXGroup;
+			children = (
+				BFDE382E1C95A97300D10F02 /* CoreServices.framework */,
+				FB8A06221A2E5A280099596C /* soylib */,
+				FB8A05951A2E54730099596C /* src */,
+				FB8A05941A2E54730099596C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB8A05941A2E54730099596C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB8A05931A2E54730099596C /* PopLeap */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB8A05951A2E54730099596C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */,
+				FBA28D0F1AFA329E00CBF5D9 /* PopLeap.h */,
+			);
+			name = src;
+			path = PopCapture;
+			sourceTree = "<group>";
+		};
+		FB8A06221A2E5A280099596C /* soylib */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE380E1C95A63200D10F02 /* memheap.cpp */,
+				BFDE380F1C95A63200D10F02 /* memheap.hpp */,
+				BFDE38041C95A4E700D10F02 /* SoyApp.cpp */,
+				BFDE38051C95A4E700D10F02 /* SoyApp.h */,
+				BFDE38101C95A63200D10F02 /* SoyAssert.cpp */,
+				BFDE38111C95A63200D10F02 /* SoyAssert.h */,
+				BFDE38121C95A63200D10F02 /* SoyDebug.cpp */,
+				BFDE38131C95A63200D10F02 /* SoyDebug.h */,
+				BFDE38141C95A63200D10F02 /* SoyDebug.mm */,
+				BFDE38191C95A64000D10F02 /* SoyEnum.h */,
+				BFDE381A1C95A64000D10F02 /* SoyEvent.cpp */,
+				BFDE381B1C95A64000D10F02 /* SoyEvent.h */,
+				BFDE38231C95A69900D10F02 /* SoyFilesystem.cpp */,
+				BFDE38281C95A6BF00D10F02 /* SoyString.mm */,
+				BFDE38241C95A69900D10F02 /* SoyFilesystem.h */,
+				BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */,
+				BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */,
+				BFDE380B1C95A61E00D10F02 /* SoyString.cpp */,
+				BFDE380C1C95A61E00D10F02 /* SoyString.h */,
+				BFDE38081C95A5F900D10F02 /* SoyThread.cpp */,
+				BFDE38091C95A5F900D10F02 /* SoyThread.h */,
+				BFDE381D1C95A65200D10F02 /* SoyTypes_Android.h */,
+				BFDE381E1C95A65200D10F02 /* SoyTypes_CoreFoundation.h */,
+				BFDE381F1C95A65200D10F02 /* SoyTypes_Windows.h */,
+				BFDE38201C95A65200D10F02 /* SoyTypes.cpp */,
+				BFDE38211C95A65200D10F02 /* SoyTypes.h */,
+			);
+			name = soylib;
+			sourceTree = SOY_PATH;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB8A05921A2E54730099596C /* PopLeap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB8A059A1A2E54730099596C /* Build configuration list for PBXNativeTarget "PopLeap" */;
+			buildPhases = (
+				FB8A058F1A2E54730099596C /* Sources */,
+				FB8A05901A2E54730099596C /* Frameworks */,
+				FB8A05911A2E54730099596C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopLeap;
+			productName = PopCapture;
+			productReference = FB8A05931A2E54730099596C /* PopLeap */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB8A058B1A2E54730099596C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = NewChromantics;
+				TargetAttributes = {
+					FB8A05921A2E54730099596C = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = FB8A058E1A2E54730099596C /* Build configuration list for PBXProject "PopLeap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FB8A058A1A2E54730099596C;
+			productRefGroup = FB8A05941A2E54730099596C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB8A05921A2E54730099596C /* PopLeap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB8A058F1A2E54730099596C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFDE380D1C95A61E00D10F02 /* SoyString.cpp in Sources */,
+				BFDE38161C95A63200D10F02 /* SoyAssert.cpp in Sources */,
+				BFDE38291C95A6BF00D10F02 /* SoyString.mm in Sources */,
+				BFDE38151C95A63200D10F02 /* memheap.cpp in Sources */,
+				BFDE380A1C95A5F900D10F02 /* SoyThread.cpp in Sources */,
+				BFDE38271C95A69900D10F02 /* SoyFilesystem.mm in Sources */,
+				BFDE38061C95A4E700D10F02 /* SoyApp.cpp in Sources */,
+				BFDE38181C95A63200D10F02 /* SoyDebug.mm in Sources */,
+				BFDE381C1C95A64000D10F02 /* SoyEvent.cpp in Sources */,
+				FBA28D101AFA329E00CBF5D9 /* PopLeap.cpp in Sources */,
+				BFDE38171C95A63200D10F02 /* SoyDebug.cpp in Sources */,
+				BFDE38221C95A65200D10F02 /* SoyTypes.cpp in Sources */,
+				BFDE38261C95A69900D10F02 /* SoyFilesystem.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FB8A05981A2E54730099596C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SOYLENT_DIR)/src/**",
+					"$(POP_DIR)/src/**",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				POP_DIR = ../NewChromantics/PopTrack/;
+				SOYLENT_DIR = ../NewChromantics/ofxSoylent/;
+			};
+			name = Debug;
+		};
+		FB8A059B1A2E54730099596C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SOYLENT_DIR)/src/**",
+					"$(POP_DIR)/src/**",
+					"$(OCULUS_DIR)/Include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(OCULUS_DIR)/Lib/Mac/Release",
+					/Volumes/Code/OculusSDK/LibOVR/Projects/Mac/Xcode/../../../Lib/Mac/Debug,
+				);
+				OCULUS_DIR = /Volumes/Code/OculusSDK/LibOVR;
+				PRODUCT_NAME = PopLeap;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB8A058E1A2E54730099596C /* Build configuration list for PBXProject "PopLeap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB8A05981A2E54730099596C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FB8A059A1A2E54730099596C /* Build configuration list for PBXNativeTarget "PopLeap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB8A059B1A2E54730099596C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB8A058B1A2E54730099596C /* Project object */;
+}
