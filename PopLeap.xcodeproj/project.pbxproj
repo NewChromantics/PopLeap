@@ -20,6 +20,15 @@
 		BFDE38271C95A69900D10F02 /* SoyFilesystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */; };
 		BFDE38291C95A6BF00D10F02 /* SoyString.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38281C95A6BF00D10F02 /* SoyString.mm */; };
 		BFDE382F1C95A97300D10F02 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDE382E1C95A97300D10F02 /* CoreServices.framework */; };
+		BFDE383C1C95AEDD00D10F02 /* SoyHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38301C95AEDD00D10F02 /* SoyHttp.cpp */; };
+		BFDE383D1C95AEDD00D10F02 /* SoyHttpConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38321C95AEDD00D10F02 /* SoyHttpConnection.cpp */; };
+		BFDE383E1C95AEDD00D10F02 /* SoyHttpServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38341C95AEDD00D10F02 /* SoyHttpServer.cpp */; };
+		BFDE383F1C95AEDD00D10F02 /* SoyProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38361C95AEDD00D10F02 /* SoyProtocol.cpp */; };
+		BFDE38401C95AEDD00D10F02 /* SoySocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38381C95AEDD00D10F02 /* SoySocket.cpp */; };
+		BFDE38411C95AEDD00D10F02 /* SoySocketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE383A1C95AEDD00D10F02 /* SoySocketStream.cpp */; };
+		BFDE38441C95B39300D10F02 /* SoyStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38421C95B39300D10F02 /* SoyStream.cpp */; };
+		BFDE384A1C95B3AA00D10F02 /* SoyRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38471C95B3AA00D10F02 /* SoyRef.cpp */; };
+		BFDE384D1C95B3C900D10F02 /* SoyMediaFormat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE384B1C95B3C900D10F02 /* SoyMediaFormat.cpp */; };
 		FBA28D101AFA329E00CBF5D9 /* PopLeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +72,24 @@
 		BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoyFilesystem.mm; path = src/SoyFilesystem.mm; sourceTree = "<group>"; };
 		BFDE38281C95A6BF00D10F02 /* SoyString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoyString.mm; path = src/SoyString.mm; sourceTree = "<group>"; };
 		BFDE382E1C95A97300D10F02 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		BFDE38301C95AEDD00D10F02 /* SoyHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyHttp.cpp; path = src/SoyHttp.cpp; sourceTree = "<group>"; };
+		BFDE38311C95AEDD00D10F02 /* SoyHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyHttp.h; path = src/SoyHttp.h; sourceTree = "<group>"; };
+		BFDE38321C95AEDD00D10F02 /* SoyHttpConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyHttpConnection.cpp; path = src/SoyHttpConnection.cpp; sourceTree = "<group>"; };
+		BFDE38331C95AEDD00D10F02 /* SoyHttpConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyHttpConnection.h; path = src/SoyHttpConnection.h; sourceTree = "<group>"; };
+		BFDE38341C95AEDD00D10F02 /* SoyHttpServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyHttpServer.cpp; path = src/SoyHttpServer.cpp; sourceTree = "<group>"; };
+		BFDE38351C95AEDD00D10F02 /* SoyHttpServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyHttpServer.h; path = src/SoyHttpServer.h; sourceTree = "<group>"; };
+		BFDE38361C95AEDD00D10F02 /* SoyProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyProtocol.cpp; path = src/SoyProtocol.cpp; sourceTree = "<group>"; };
+		BFDE38371C95AEDD00D10F02 /* SoyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyProtocol.h; path = src/SoyProtocol.h; sourceTree = "<group>"; };
+		BFDE38381C95AEDD00D10F02 /* SoySocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoySocket.cpp; path = src/SoySocket.cpp; sourceTree = "<group>"; };
+		BFDE38391C95AEDD00D10F02 /* SoySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoySocket.h; path = src/SoySocket.h; sourceTree = "<group>"; };
+		BFDE383A1C95AEDD00D10F02 /* SoySocketStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoySocketStream.cpp; path = src/SoySocketStream.cpp; sourceTree = "<group>"; };
+		BFDE383B1C95AEDD00D10F02 /* SoySocketStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoySocketStream.h; path = src/SoySocketStream.h; sourceTree = "<group>"; };
+		BFDE38421C95B39300D10F02 /* SoyStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyStream.cpp; path = src/SoyStream.cpp; sourceTree = "<group>"; };
+		BFDE38431C95B39300D10F02 /* SoyStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyStream.h; path = src/SoyStream.h; sourceTree = "<group>"; };
+		BFDE38471C95B3AA00D10F02 /* SoyRef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyRef.cpp; path = src/SoyRef.cpp; sourceTree = "<group>"; };
+		BFDE38481C95B3AA00D10F02 /* SoyRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyRef.h; path = src/SoyRef.h; sourceTree = "<group>"; };
+		BFDE384B1C95B3C900D10F02 /* SoyMediaFormat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyMediaFormat.cpp; path = src/SoyMediaFormat.cpp; sourceTree = "<group>"; };
+		BFDE384C1C95B3C900D10F02 /* SoyMediaFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyMediaFormat.h; path = src/SoyMediaFormat.h; sourceTree = "<group>"; };
 		FB8A05931A2E54730099596C /* PopLeap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PopLeap; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopLeap.cpp; path = src/PopLeap.cpp; sourceTree = SOURCE_ROOT; };
 		FBA28D0F1AFA329E00CBF5D9 /* PopLeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopLeap.h; path = src/PopLeap.h; sourceTree = SOURCE_ROOT; };
@@ -124,12 +151,30 @@
 				BFDE381A1C95A64000D10F02 /* SoyEvent.cpp */,
 				BFDE381B1C95A64000D10F02 /* SoyEvent.h */,
 				BFDE38231C95A69900D10F02 /* SoyFilesystem.cpp */,
-				BFDE38281C95A6BF00D10F02 /* SoyString.mm */,
 				BFDE38241C95A69900D10F02 /* SoyFilesystem.h */,
 				BFDE38251C95A69900D10F02 /* SoyFilesystem.mm */,
+				BFDE38301C95AEDD00D10F02 /* SoyHttp.cpp */,
+				BFDE38311C95AEDD00D10F02 /* SoyHttp.h */,
+				BFDE38321C95AEDD00D10F02 /* SoyHttpConnection.cpp */,
+				BFDE38331C95AEDD00D10F02 /* SoyHttpConnection.h */,
+				BFDE38341C95AEDD00D10F02 /* SoyHttpServer.cpp */,
+				BFDE38351C95AEDD00D10F02 /* SoyHttpServer.h */,
 				BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */,
+				BFDE384B1C95B3C900D10F02 /* SoyMediaFormat.cpp */,
+				BFDE384C1C95B3C900D10F02 /* SoyMediaFormat.h */,
+				BFDE38361C95AEDD00D10F02 /* SoyProtocol.cpp */,
+				BFDE38371C95AEDD00D10F02 /* SoyProtocol.h */,
+				BFDE38471C95B3AA00D10F02 /* SoyRef.cpp */,
+				BFDE38481C95B3AA00D10F02 /* SoyRef.h */,
+				BFDE38381C95AEDD00D10F02 /* SoySocket.cpp */,
+				BFDE38391C95AEDD00D10F02 /* SoySocket.h */,
+				BFDE383A1C95AEDD00D10F02 /* SoySocketStream.cpp */,
+				BFDE383B1C95AEDD00D10F02 /* SoySocketStream.h */,
+				BFDE38421C95B39300D10F02 /* SoyStream.cpp */,
+				BFDE38431C95B39300D10F02 /* SoyStream.h */,
 				BFDE380B1C95A61E00D10F02 /* SoyString.cpp */,
 				BFDE380C1C95A61E00D10F02 /* SoyString.h */,
+				BFDE38281C95A6BF00D10F02 /* SoyString.mm */,
 				BFDE38081C95A5F900D10F02 /* SoyThread.cpp */,
 				BFDE38091C95A5F900D10F02 /* SoyThread.h */,
 				BFDE381D1C95A65200D10F02 /* SoyTypes_Android.h */,
@@ -197,17 +242,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFDE38401C95AEDD00D10F02 /* SoySocket.cpp in Sources */,
+				BFDE384D1C95B3C900D10F02 /* SoyMediaFormat.cpp in Sources */,
 				BFDE380D1C95A61E00D10F02 /* SoyString.cpp in Sources */,
 				BFDE38161C95A63200D10F02 /* SoyAssert.cpp in Sources */,
 				BFDE38291C95A6BF00D10F02 /* SoyString.mm in Sources */,
 				BFDE38151C95A63200D10F02 /* memheap.cpp in Sources */,
+				BFDE383E1C95AEDD00D10F02 /* SoyHttpServer.cpp in Sources */,
+				BFDE384A1C95B3AA00D10F02 /* SoyRef.cpp in Sources */,
 				BFDE380A1C95A5F900D10F02 /* SoyThread.cpp in Sources */,
 				BFDE38271C95A69900D10F02 /* SoyFilesystem.mm in Sources */,
 				BFDE38061C95A4E700D10F02 /* SoyApp.cpp in Sources */,
+				BFDE383F1C95AEDD00D10F02 /* SoyProtocol.cpp in Sources */,
 				BFDE38181C95A63200D10F02 /* SoyDebug.mm in Sources */,
+				BFDE383D1C95AEDD00D10F02 /* SoyHttpConnection.cpp in Sources */,
 				BFDE381C1C95A64000D10F02 /* SoyEvent.cpp in Sources */,
+				BFDE383C1C95AEDD00D10F02 /* SoyHttp.cpp in Sources */,
 				FBA28D101AFA329E00CBF5D9 /* PopLeap.cpp in Sources */,
 				BFDE38171C95A63200D10F02 /* SoyDebug.cpp in Sources */,
+				BFDE38411C95AEDD00D10F02 /* SoySocketStream.cpp in Sources */,
+				BFDE38441C95B39300D10F02 /* SoyStream.cpp in Sources */,
 				BFDE38221C95A65200D10F02 /* SoyTypes.cpp in Sources */,
 				BFDE38261C95A69900D10F02 /* SoyFilesystem.cpp in Sources */,
 			);
