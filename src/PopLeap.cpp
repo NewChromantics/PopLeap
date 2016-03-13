@@ -1,6 +1,6 @@
 #include "PopLeap.h"
 #include <SoyHttpServer.h>
-
+#include "SoyLeapMotion.h"
 
 
 namespace PopLeap
@@ -13,6 +13,8 @@ namespace PopLeap
 	
 	std::string			GetDebugLog();
 	void				PushDebugLog(const std::string& String);
+
+	LeapMotion::TFrame	gLastFrame;
 }
 
 
@@ -60,6 +62,16 @@ void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServ
 		return;
 	}
 	
+	if ( Request.mUrl == "leap" )
+	{
+		Http::TResponseProtocol Response;
+		std::stringstream FrameJson;
+		FrameJson << PopLeap::gLastFrame;
+		Response.SetContent( FrameJson.str(), SoyMediaFormat::Json );
+		HttpServer.SendResponse( Response, Client );
+		return;
+	}
+	
 	Http::TResponseProtocol Response( Http::Response_FileNotFound );
 	HttpServer.SendResponse( Response, Client );
 };
@@ -69,12 +81,20 @@ void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServ
 
 int main()
 {
-	//	copy the debug output
-	std::Debug.GetOnFlushEvent().AddListener( [](const std::string& Debug) {	PopLeap::PushDebugLog( Debug );	} );
-	
 	TPopLeapApp App;
 
-	THttpServer HttpServer( 8080, OnHttpRequest );
+	//	copy the debug output
+	std::Debug.GetOnFlushEvent().AddListener( PopLeap::PushDebugLog );
+	
+	auto OnLeapFrame = [](LeapMotion::TFrame& Frame)
+	{
+		PopLeap::gLastFrame = Frame;
+	};
+	
+	LeapMotion::TDevice LeapMotion;
+	LeapMotion.mOnFrame.AddListener( OnLeapFrame );
+	
+	THttpServer HttpServer( 8081, OnHttpRequest );
 
 	std::Debug << "HTTP Listening on " << HttpServer.GetListeningPort() << std::endl;
 	
