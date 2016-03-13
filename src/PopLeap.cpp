@@ -114,6 +114,11 @@ void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServ
 		Http::TResponseProtocol Response;
 		
 		TJsonWriter Json;
+		
+		auto EchoVar = Request.GetVariable("echo");
+		if ( !EchoVar.empty() )
+			Json.Push("echo", EchoVar );
+		
 		PopLeap::GetLeapMotionFrame( Json );
 
 		Response.SetContent( Json.mStream.str(), SoyMediaFormat::Json );
@@ -139,7 +144,7 @@ int main()
 	LeapMotion.mOnFrame.AddListener( PopLeap::OnLeapMotionFrame );
 	LeapMotion.mOnError.AddListener( PopLeap::OnLeapMotionError );
 	
-	THttpServer HttpServer( 8081, OnHttpRequest );
+	THttpServer HttpServer( 8080, OnHttpRequest );
 
 	std::Debug << "HTTP Listening on " << HttpServer.GetListeningPort() << std::endl;
 	
