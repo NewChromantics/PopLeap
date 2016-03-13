@@ -23,9 +23,9 @@ Soy::Bounds3f GetBounds(const Leap::InteractionBox& Box)
 std::string GetJson(const Leap::Bone& Bone)
 {
 	TJsonWriter Json;
-	Json.Push("Position", Bone.prevJoint() );
-	Json.Push("PositionTip", Bone.nextJoint() );
-	Json.Push("Direction", Bone.direction() );
+	Json.Push("Position", GetVector( Bone.prevJoint() ) );
+	Json.Push("PositionTip", GetVector( Bone.nextJoint() ) );
+	Json.Push("Direction", GetVector( Bone.direction() ) );
 	Json.Close();
 	return Json.mStream.str();
 }
@@ -55,8 +55,8 @@ void GetJson(TJsonWriter& Json,const Leap::Hand& Hand)
 	Json.Push("Confidence", Hand.confidence() );
 
 	Json.Push("GrabStrength", Hand.grabStrength() );
-	Json.Push("PalmNormal", Hand.palmNormal() );
-	Json.Push("PalmPosition", Hand.palmPosition() );
+	Json.Push("PalmNormal", GetVector( Hand.palmNormal() ) );
+	Json.Push("PalmPosition", GetVector( Hand.palmPosition() ) );
 
 	auto Fingers = Hand.fingers();
 	for ( auto it=Fingers.begin();	it!=Fingers.end();	it++ )
@@ -111,7 +111,7 @@ bool LeapMotion::TDevice::Iteration()
 	
 	Json.Push("FramesPerSecond", LastFrame.currentFramesPerSecond() );
 	Json.Push("FrameId", LastFrame.id() );
-	Json.Push("InteractionBox", GetBounds( LastFrame.interactionBox() ) );
+	Json.Push("InteractionMinMax", GetBounds( LastFrame.interactionBox() ) );
 
 	auto HandList = LastFrame.hands();
 	for ( auto it=HandList.begin();	it!=HandList.end();	it++ )
