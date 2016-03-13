@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF44C3E21C95ED6800C86402 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF44C3E11C95ED6800C86402 /* libLeap.dylib */; };
+		BF44C3E51C95F2C100C86402 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF44C3E11C95ED6800C86402 /* libLeap.dylib */; };
 		BFDE38061C95A4E700D10F02 /* SoyApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38041C95A4E700D10F02 /* SoyApp.cpp */; };
 		BFDE380A1C95A5F900D10F02 /* SoyThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE38081C95A5F900D10F02 /* SoyThread.cpp */; };
 		BFDE380D1C95A61E00D10F02 /* SoyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFDE380B1C95A61E00D10F02 /* SoyString.cpp */; };
@@ -41,12 +43,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				BF44C3E51C95F2C100C86402 /* libLeap.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF44C3E01C95ED6100C86402 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
+		BF44C3E11C95ED6800C86402 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = lib/libLeap.dylib; sourceTree = "<group>"; };
 		BFDE38041C95A4E700D10F02 /* SoyApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyApp.cpp; path = src/SoyApp.cpp; sourceTree = "<group>"; };
 		BFDE38051C95A4E700D10F02 /* SoyApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyApp.h; path = src/SoyApp.h; sourceTree = "<group>"; };
 		BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SoyLib_Osx.xcconfig; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF44C3E21C95ED6800C86402 /* libLeap.dylib in Frameworks */,
 				BFDE382F1C95A97300D10F02 /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,9 +119,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFDE38571C95ED0100D10F02 /* LeapSdk */ = {
+			isa = PBXGroup;
+			children = (
+				BF44C3E11C95ED6800C86402 /* libLeap.dylib */,
+				BF44C3E01C95ED6100C86402 /* include */,
+			);
+			name = LeapSdk;
+			sourceTree = LEAP_PATH;
+		};
 		FB8A058A1A2E54730099596C = {
 			isa = PBXGroup;
 			children = (
+				BFDE38571C95ED0100D10F02 /* LeapSdk */,
 				BFDE382E1C95A97300D10F02 /* CoreServices.framework */,
 				FB8A06221A2E5A280099596C /* soylib */,
 				FB8A05951A2E54730099596C /* src */,
@@ -326,11 +342,13 @@
 					"$(SOYLENT_DIR)/src/**",
 					"$(POP_DIR)/src/**",
 					"$(OCULUS_DIR)/Include",
+					"$(LEAP_PATH)/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(OCULUS_DIR)/Lib/Mac/Release",
 					/Volumes/Code/OculusSDK/LibOVR/Projects/Mac/Xcode/../../../Lib/Mac/Debug,
+					"$(LEAP_PATH)/lib",
 				);
 				OCULUS_DIR = /Volumes/Code/OculusSDK/LibOVR;
 				PRODUCT_NAME = PopLeap;

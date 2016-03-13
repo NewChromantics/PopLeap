@@ -1,6 +1,7 @@
 #include "PopLeap.h"
 #include <SoyHttpServer.h>
 #include "SoyLeapMotion.h"
+#include <SoyJson.h>
 
 
 namespace PopLeap
@@ -14,7 +15,14 @@ namespace PopLeap
 	std::string			GetDebugLog();
 	void				PushDebugLog(const std::string& String);
 
-	LeapMotion::TFrame	gLastFrame;
+	std::string			gLastError;
+	std::string			gLastFrameJson;
+	SoyTime				gLastFrameTime;
+	void				OnLeapMotionFrame(TJsonWriter& Frame);
+	void				OnLeapMotionError(const std::string& Error);
+	void				GetLeapMotionFrame(TJsonWriter& Json);
+	void				OnLeapMotionChanged();
+	SoyEvent<bool>		gOnLeapMotionChanged;
 }
 
 
@@ -29,6 +37,45 @@ void PopLeap::PushDebugLog(const std::string& String)
 {
 	std::lock_guard<std::mutex> Lock( Private::DebugLogLock );
 	Private::DebugLog += String;
+}
+
+void PopLeap::OnLeapMotionFrame(TJsonWriter& Frame)
+{
+	gLastFrameJson = Frame.mStream.str();
+	gLastError = std::string();
+	gLastFrameTime = SoyTime(true);
+	OnLeapMotionChanged();
+}
+
+void PopLeap::OnLeapMotionError(const std::string& Error)
+{
+	gLastError = Error;
+	OnLeapMotionChanged();
+}
+
+void PopLeap::OnLeapMotionChanged()
+{
+	bool Dummy = false;
+	gOnLeapMotionChanged.OnTriggered( Dummy );
+}
+
+void PopLeap::GetLeapMotionFrame(TJsonWriter& Json)
+{
+	auto& Error = gLastError;
+	auto& Frame = gLastFrameJson;
+	auto& FrameTime = gLastFrameTime;
+	
+	Json.Push("Time", FrameTime );
+
+	//	meta
+	Json.Push("TimeNow", SoyTime(true) );
+	if ( !Error.empty() )
+		Json.Push("Error", Error );
+
+	if ( !Frame.empty() )
+		Json.PushJson("Frame", Frame );
+	
+	Json.Close();
 }
 
 
@@ -65,9 +112,11 @@ void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServ
 	if ( Request.mUrl == "leap" )
 	{
 		Http::TResponseProtocol Response;
-		std::stringstream FrameJson;
-		FrameJson << PopLeap::gLastFrame;
-		Response.SetContent( FrameJson.str(), SoyMediaFormat::Json );
+		
+		TJsonWriter Json;
+		PopLeap::GetLeapMotionFrame( Json );
+
+		Response.SetContent( Json.mStream.str(), SoyMediaFormat::Json );
 		HttpServer.SendResponse( Response, Client );
 		return;
 	}
@@ -86,13 +135,9 @@ int main()
 	//	copy the debug output
 	std::Debug.GetOnFlushEvent().AddListener( PopLeap::PushDebugLog );
 	
-	auto OnLeapFrame = [](LeapMotion::TFrame& Frame)
-	{
-		PopLeap::gLastFrame = Frame;
-	};
-	
 	LeapMotion::TDevice LeapMotion;
-	LeapMotion.mOnFrame.AddListener( OnLeapFrame );
+	LeapMotion.mOnFrame.AddListener( PopLeap::OnLeapMotionFrame );
+	LeapMotion.mOnError.AddListener( PopLeap::OnLeapMotionError );
 	
 	THttpServer HttpServer( 8081, OnHttpRequest );
 
