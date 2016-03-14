@@ -63,7 +63,9 @@ public class FastParse : MonoBehaviour {
 		if (MinAndMax.Length != 2)
 			throw new System.Exception ("MinMax string not valid - doesnt split by x to 2");
 
-		return new Bounds (Vector3 (MinAndMax [0]), Vector3 (MinAndMax [1]));
+		Bounds b = new Bounds ();
+		b.SetMinMax( Vector3 (MinAndMax [0]), Vector3 (MinAndMax [1]));
+		return b;
 	}
 
 }
