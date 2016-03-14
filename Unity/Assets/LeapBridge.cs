@@ -3,132 +3,146 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class LeapFinger
+
+
+//	raw flat json class
+public class LeapFrameJson
 {
-	//	Json string
-	public string	Bones;
-	
-	public int		Id;
-	public string	Type;
+	public int		HandLeft_Id;
+	public float	HandLeft_Confidence;
+	public float	HandLeft_GrabStrength;
+	public string	HandLeft_PalmNormal;
+	public string	HandLeft_PalmPosition;
 
+	public int		HandLeft_Finger0_Id;
+	public int		HandLeft_Finger0_Type;
+	public string	HandLeft_Finger0_Bone0_Position;
+	public string	HandLeft_Finger0_Bone0_PositionTip;
+	public string	HandLeft_Finger0_Bone0_Direction;
+	public string	HandLeft_Finger0_Bone1_Position;
+	public string	HandLeft_Finger0_Bone1_PositionTip;
+	public string	HandLeft_Finger0_Bone1_Direction;
+	public string	HandLeft_Finger0_Bone2_Position;
+	public string	HandLeft_Finger0_Bone2_PositionTip;
+	public string	HandLeft_Finger0_Bone2_Direction;
+	public string	HandLeft_Finger0_Bone3_Position;
+	public string	HandLeft_Finger0_Bone3_PositionTip;
+	public string	HandLeft_Finger0_Bone3_Direction;
 
-	static public LeapFinger		ParseJson(string Json)
-	{
-		if (Json == null)
-			return null;
+	public int		HandLeft_Finger1_Id;
+	public int		HandLeft_Finger1_Type;
+	public string	HandLeft_Finger1_Bone0_Position;
+	public string	HandLeft_Finger1_Bone0_PositionTip;
+	public string	HandLeft_Finger1_Bone0_Direction;
+	public string	HandLeft_Finger1_Bone1_Position;
+	public string	HandLeft_Finger1_Bone1_PositionTip;
+	public string	HandLeft_Finger1_Bone1_Direction;
+	public string	HandLeft_Finger1_Bone2_Position;
+	public string	HandLeft_Finger1_Bone2_PositionTip;
+	public string	HandLeft_Finger1_Bone2_Direction;
+	public string	HandLeft_Finger1_Bone3_Position;
+	public string	HandLeft_Finger1_Bone3_PositionTip;
+	public string	HandLeft_Finger1_Bone3_Direction;
 
-		var Finger = JsonUtility.FromJson<LeapFinger> (Json);
-		return Finger;
-	}
-};
-
-public class LeapHand
-{	
-	//	json strings
-	public string	Finger0;
-	public string	Finger1;
-	public string	Finger2;
-	public string	Finger3;
-	public string	Finger4;
-
-	public int		Id;
-	public float	Confidence;
-	public float	GrabStrength;
-	public Vector3	PalmNormal;
-	public Vector3	PalmPosition;
-	public List<LeapFinger>	Fingers;
-
-	public LeapFinger	GetFinger(int Index)
-	{
-		return (Fingers!=null && Fingers.Count>Index) ? Fingers[Index] : null;
-	}
-
-	private void	AddJsonFinger(string Json)
-	{
-		if (Json == null)
-			return;
-		var Finger = LeapFinger.ParseJson (Json);
-		if (Finger != null) {
-			if (Fingers == null)
-				Fingers = new List<LeapFinger> ();
-			Fingers.Add (Finger);
-		}
-	}
-
-	static public LeapHand		ParseJson(string Json)
-	{
-		if (Json == null)
-			return null;
-
-		var Hand = JsonUtility.FromJson<LeapHand> (Json);
-		Hand.AddJsonFinger (Hand.Finger0);
-		Hand.AddJsonFinger (Hand.Finger1);
-		Hand.AddJsonFinger (Hand.Finger2);
-		Hand.AddJsonFinger (Hand.Finger3);
-		Hand.AddJsonFinger (Hand.Finger4);
-
-		return Hand;
-	}
-};
-
-//	serialisable to mix with json
-public class LeapFrame
-{
-	//	json strings
-	public string	LeftHand;
-	public string	RightHand;
 	public string	InteractionMinMax;	
 
 	public string	Error;
 	public string	Time;
 	public string	TimeNow;
-	public List<LeapHand>	Hands;
-	public Bounds	InteractionBounds;
+};
 
 
-	public LeapHand	GetHand(int Index)
+
+public class LeapFinger
+{
+	public int		Id;
+	public int		Type;
+
+	//	change these to matrixes using direction
+	public Vector3	Position0;
+	public Vector3	Position1;
+	public Vector3	Position2;
+	public Vector3	Position3;
+	public Vector3	Position4;
+};
+
+public class LeapHand
+{
+	public Vector3			Position;
+	public Vector3			Normal;
+	public int				Id;
+	public float			Confidence;
+	public float			GrabStrength;
+
+	public List<LeapFinger>	Fingers;
+
+	static bool GetVariable<T>(ref T Out,string VariableName,LeapFrameJson Data)
 	{
-		return (Hands!=null && Hands.Count>Index) ? Hands[Index] : null;
+		var Property = Data.GetType ().GetProperty (VariableName);
+		if (Property == null)
+			return false;
+		Out = (T)Property.GetValue (Data,null) ;
+		return true;
 	}
 
-	private void	AddJsonHand(string Json)
+	static bool ParseVariable<T>(ref T Out,string VariableName,LeapFrameJson Data,System.Func<string,T>  Parser)
 	{
-		if (Json == null)
-			return;
-		var Hand = LeapHand.ParseJson (Json);
-		if (Hand != null) {
-			if (Hands == null)
-				Hands = new List<LeapHand> ();
-			Hands.Add (Hand);
+		string Value = "";
+		if (!GetVariable (ref Value, VariableName, Data))
+			return false;
+		try
+		{
+			Out = Parser (Value);
+			return true;
+		}
+		catch(System.Exception ) {
+			return false;
 		}
 	}
 
-
-	static public LeapFrame		ParseJson(string Json)
+	public LeapHand(string HandPrefix, LeapFrameJson RawFrame)
 	{
-		if (Json == null)
-			return null;
+		bool AnyData = false;
+		AnyData |= GetVariable (ref Id, HandPrefix + "_Id", RawFrame);
+		AnyData |= GetVariable (ref Confidence, HandPrefix + "_Confidence", RawFrame);
+		AnyData |= GetVariable (ref GrabStrength, HandPrefix + "_GrabStrength", RawFrame);
+		AnyData |= ParseVariable (ref Position, HandPrefix + "_PalmPosition", RawFrame, FastParse.Vector3);
+		AnyData |= ParseVariable (ref Normal, HandPrefix + "_PalmNormal", RawFrame, FastParse.Vector3);
 
-		var Frame = JsonUtility.FromJson<LeapFrame> (Json);
+		if (!AnyData)
+			throw new System.Exception ("No hand data");
+	}
+
+};
+
+public class LeapFrame
+{
+	public LeapHand	LeftHand;
+	public LeapHand	RightHand;
+	public string	Error;
+	public Bounds	InteractionBounds;
+	public int		Time;			//	timestamp of the frame
+	public int		TimeNow;		//	timestamp of the packet
+
+	public LeapFrame(string Json)
+	{
+		var FrameData = JsonUtility.FromJson<LeapFrameJson> (Json);
+		Error = FrameData.Error;
 
 		try
 		{
-			var lh = LeapHand.ParseJson (Frame.LeftHand);
-			var rh = LeapHand.ParseJson (Frame.RightHand);
-			Frame.Hands = new List<LeapHand> ();
-			if ( lh != null )	Frame.Hands.Add (lh);
-			if ( rh != null )	Frame.Hands.Add (rh);
-
-			if ( Frame.InteractionMinMax != null )
-				Frame.InteractionBounds = FastParse.MinMaxToBounds( Frame.InteractionMinMax );
+			LeftHand = new LeapHand ("HandLeft", FrameData);
 		}
-		catch(System.Exception e) {
-			if (Frame.Error==null)
-				Frame.Error = "";
-			Frame.Error += "exception parsing json: " + e.Message;
-		}
+		catch(System.Exception){}
 
-		return Frame;
+		try
+		{
+			RightHand = new LeapHand ("HandRight", FrameData);
+		}
+		catch(System.Exception){}
+
+		if ( FrameData.InteractionMinMax != null )
+			InteractionBounds = FastParse.MinMaxToBounds (FrameData.InteractionMinMax);
 	}
 
 	//	some slightly cleaner accessors
@@ -155,7 +169,7 @@ public class LeapBridge : MonoBehaviour {
 		}
 
 		HandObject.gameObject.SetActive (true);
-		HandObject.transform.localPosition = HandData.PalmPosition;
+		HandObject.transform.localPosition = HandData.Position;
 	}
 
 
@@ -176,8 +190,8 @@ public class LeapBridge : MonoBehaviour {
 			MinMaxBox.transform.localScale = Frame.InteractionBounds.size;
 		}
 
-		SetHand (LeftHand, Frame.GetHand (0));
-		SetHand (RightHand, Frame.GetHand (1));
+		SetHand (LeftHand, Frame.LeftHand);
+		SetHand (RightHand, Frame.RightHand);
 
 		Debug.Log ("Frame time: " + Frame.Time + ", Now: " + Frame.TimeNow);
 	}
@@ -185,7 +199,7 @@ public class LeapBridge : MonoBehaviour {
 	public void SetFrame(string JsonString)
 	{
 		Debug.Log ("json: " + JsonString);
-		var Frame = LeapFrame.ParseJson(JsonString);
+		var Frame = new LeapFrame(JsonString);
 		SetFrame (Frame);
 	}
 
