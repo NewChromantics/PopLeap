@@ -52,6 +52,7 @@
 /* Begin PBXFileReference section */
 		BF44C3E01C95ED6100C86402 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
 		BF44C3E11C95ED6800C86402 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = lib/libLeap.dylib; sourceTree = "<group>"; };
+		BF44C3E61C962E4100C86402 /* TUdpJsonServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TUdpJsonServer.h; path = src/TUdpJsonServer.h; sourceTree = SOURCE_ROOT; };
 		BFDE38041C95A4E700D10F02 /* SoyApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoyApp.cpp; path = src/SoyApp.cpp; sourceTree = "<group>"; };
 		BFDE38051C95A4E700D10F02 /* SoyApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoyApp.h; path = src/SoyApp.h; sourceTree = "<group>"; };
 		BFDE38071C95A52C00D10F02 /* SoyLib_Osx.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SoyLib_Osx.xcconfig; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		FB8A05951A2E54730099596C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BF44C3E61C962E4100C86402 /* TUdpJsonServer.h */,
 				BFDE38511C95E42400D10F02 /* SoyLeapMotion.h */,
 				BFDE38521C95E42400D10F02 /* SoyLeapMotion.mm */,
 				FBA28D0E1AFA329E00CBF5D9 /* PopLeap.cpp */,

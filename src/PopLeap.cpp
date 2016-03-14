@@ -2,6 +2,7 @@
 #include <SoyHttpServer.h>
 #include "SoyLeapMotion.h"
 #include <SoyJson.h>
+//#include "TUdpJsonServer.h"
 
 
 namespace PopLeap
@@ -15,7 +16,7 @@ namespace PopLeap
 	std::string			GetDebugLog();
 	void				PushDebugLog(const std::string& String);
 
-	std::string			gLastError;
+	std::string			gLastError = "Waiting for first frame";
 	std::string			gLastFrameJson;
 	SoyTime				gLastFrameTime;
 	void				OnLeapMotionFrame(TJsonWriter& Frame);
@@ -73,7 +74,7 @@ void PopLeap::GetLeapMotionFrame(TJsonWriter& Json)
 		Json.Push("Error", Error );
 
 	if ( !Frame.empty() )
-		Json.PushJson("Frame", Frame );
+		Json.MergeJson( Frame );
 	
 	Json.Close();
 }
@@ -82,7 +83,7 @@ void PopLeap::GetLeapMotionFrame(TJsonWriter& Json)
 
 void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServer& HttpServer)
 {
-	std::Debug << "request for " << Request.mUrl << " from " << Client << std::endl;
+	std::Debug << "http request for " << Request.mUrl << " from " << Client << std::endl;
 
 	if ( Request.mUrl.empty() )
 	{
@@ -130,6 +131,19 @@ void OnHttpRequest(const Http::TRequestProtocol& Request,SoyRef Client,THttpServ
 	HttpServer.SendResponse( Response, Client );
 };
 
+/*
+
+void OnUdpRequest(const Json::TReadProtocol& Request,SoyRef Client,TUdpJsonServer& Server)
+{
+	std::Debug << "udp request from " << Client << std::endl;
+	
+	
+	
+	Http::TResponseProtocol Response( Http::Response_FileNotFound );
+	HttpServer.SendResponse( Response, Client );
+};
+*/
+
 
 
 
@@ -144,13 +158,21 @@ int main()
 	LeapMotion.mOnFrame.AddListener( PopLeap::OnLeapMotionFrame );
 	LeapMotion.mOnError.AddListener( PopLeap::OnLeapMotionError );
 	
-	THttpServer HttpServer( 8080, OnHttpRequest );
+	try
+	{
+		THttpServer HttpServer( 8080, OnHttpRequest );
+	//	TUdpJsonServer UdpServer( 9090, OnUdpRequest );
 
-	std::Debug << "HTTP Listening on " << HttpServer.GetListeningPort() << std::endl;
-	
-	App.mConsoleApp.WaitForExit();
-
-	return 0;
+		std::Debug << "HTTP Listening on " << HttpServer.GetListeningPort() << std::endl;
+		
+		App.mConsoleApp.WaitForExit();
+		return 0;
+	}
+	catch(std::exception& e)
+	{
+		std::Debug << "Exception: " << e.what() << ". Exiting." << std::endl;
+		return 1;
+	}
 }
 
 

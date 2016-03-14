@@ -20,58 +20,48 @@ Soy::Bounds3f GetBounds(const Leap::InteractionBox& Box)
 }
 
 
-std::string GetJson(const Leap::Bone& Bone)
+void GetJson(TJsonWriter& Json,const std::string& NamePrefix,const Leap::Bone& Bone)
 {
-	TJsonWriter Json;
-	Json.Push("Position", GetVector( Bone.prevJoint() ) );
-	Json.Push("PositionTip", GetVector( Bone.nextJoint() ) );
-	Json.Push("Direction", GetVector( Bone.direction() ) );
-	Json.Close();
-	return Json.mStream.str();
+	Json.Push(NamePrefix+"Position", GetVector( Bone.prevJoint() ) );
+	Json.Push(NamePrefix+"PositionTip", GetVector( Bone.nextJoint() ) );
+	Json.Push(NamePrefix+"Direction", GetVector( Bone.direction() ) );
 }
 
-void GetJson(TJsonWriter& Json,const Leap::Finger& Finger)
+void GetJson(TJsonWriter& Json,const std::string& NamePrefix,const Leap::Finger& Finger)
 {
-	Json.Push("Id", Finger.id() );
-	Json.Push("Type", Finger.type() );
+	Json.Push(NamePrefix+"Id", Finger.id() );
+	Json.Push(NamePrefix+"Type", Finger.type() );
 	
 	auto Bone0 = Finger.bone(Leap::Bone::Type::TYPE_METACARPAL);
 	auto Bone1 = Finger.bone(Leap::Bone::Type::TYPE_PROXIMAL);
 	auto Bone2 = Finger.bone(Leap::Bone::Type::TYPE_INTERMEDIATE);
 	auto Bone3 = Finger.bone(Leap::Bone::Type::TYPE_DISTAL);
 
-	BufferArray<std::string,4> BoneJsons;
-	BoneJsons.PushBack( GetJson(Bone0) );
-	BoneJsons.PushBack( GetJson(Bone1) );
-	BoneJsons.PushBack( GetJson(Bone2) );
-	BoneJsons.PushBack( GetJson(Bone3) );
-	
-	Json.PushJson("Bones", GetArrayBridge(BoneJsons) );
+	GetJson( Json, NamePrefix+"_Bone0_", Bone0 );
+	GetJson( Json, NamePrefix+"_Bone1_", Bone1 );
+	GetJson( Json, NamePrefix+"_Bone2_", Bone2 );
+	GetJson( Json, NamePrefix+"_Bone3_", Bone3 );
 }
 
-void GetJson(TJsonWriter& Json,const Leap::Hand& Hand)
+void GetJson(TJsonWriter& Json,const std::string& NamePrefix,const Leap::Hand& Hand)
 {
-	Json.Push("Id", Hand.id() );
-	Json.Push("Confidence", Hand.confidence() );
+	Json.Push( NamePrefix+"Id", Hand.id() );
+	Json.Push( NamePrefix+"Confidence", Hand.confidence() );
 
-	Json.Push("GrabStrength", Hand.grabStrength() );
-	Json.Push("PalmNormal", GetVector( Hand.palmNormal() ) );
-	Json.Push("PalmPosition", GetVector( Hand.palmPosition() ) );
+	Json.Push( NamePrefix+"GrabStrength", Hand.grabStrength() );
+	Json.Push( NamePrefix+"PalmNormal", GetVector( Hand.palmNormal() ) );
+	Json.Push( NamePrefix+"PalmPosition", GetVector( Hand.palmPosition() ) );
 
 	auto Fingers = Hand.fingers();
 	for ( auto it=Fingers.begin();	it!=Fingers.end();	it++ )
 	{
 		auto& Finger = *it;
-		TJsonWriter FingerJson;
-		GetJson( FingerJson, Finger );
-		FingerJson.Close();
 		
 		std::stringstream Name;
-		Name << "Finger" << Finger.type();
-		Json.Push( Name.str().c_str(), FingerJson );
+		Name << NamePrefix << "Finger" << Finger.type() << "_";
+
+		GetJson( Json, Name.str(), Finger );
 	}
-	
-	Json.Close();
 }
 
 LeapMotion::TDevice::TDevice() :
@@ -106,7 +96,7 @@ bool LeapMotion::TDevice::Iteration()
 		mOnError.OnTriggered("Last frame invalid");
 		return true;
 	}
-	
+		
 	TJsonWriter Json;
 	
 	Json.Push("FramesPerSecond", LastFrame.currentFramesPerSecond() );
@@ -117,15 +107,10 @@ bool LeapMotion::TDevice::Iteration()
 	for ( auto it=HandList.begin();	it!=HandList.end();	it++ )
 	{
 		auto& Hand = *it;
-		TJsonWriter HandJson;
-		GetJson( HandJson, Hand );
-
-		if ( Hand.isLeft() )
-			Json.Push("LeftHand", HandJson );
-		else if ( Hand.isRight() )
-			Json.Push("RightHand", HandJson );
-		else
-			Json.Push("OtherHand", HandJson );
+		
+		std::string NamePrefix = Hand.isLeft() ? "HandLeft_" : "HandRight_";
+		
+		GetJson( Json, NamePrefix, Hand );
 	}
 
 	Json.Close();
