@@ -334,6 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorText: {fileID: 0}
+  MinMaxBox: {fileID: 1167913315}
+  LeftHand: {fileID: 1198237550}
+  RightHand: {fileID: 25659505}
 --- !u!1 &881280309
 GameObject:
   m_ObjectHideFlags: 0
